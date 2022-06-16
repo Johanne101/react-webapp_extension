@@ -12,7 +12,7 @@
   * `POST`
   * `DELETE`
 
-* [Thread class]()
+* [Thread class](https://www.javatpoint.com/how-to-create-a-thread-in-java)
 * [Methods]()
 
 |Methods|
