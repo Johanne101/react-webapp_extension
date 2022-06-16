@@ -10,6 +10,7 @@ time = "%Y-%m-%dT%H:%M:%S.%f"
 
 Base = object
 
+hash_func = hash
 
 class BaseModel:
     """The BaseModel class from which future classes will be derived"""

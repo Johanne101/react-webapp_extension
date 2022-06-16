@@ -2,7 +2,7 @@
 """ Contains Thread class """
 
 import models
-from models.base_model import BaseModel, Base
+from models.base_model import BaseModel, Base, hash_func
 from os import getenv
 
 class Thread(BaseModel, Base):
