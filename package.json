@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/Johanne101/react-webapp_extension/issues"
   },
-  "homepage": "https://github.com/Johanne101/react-webapp_extension#readme"
+  "homepage": "https://github.com/Johanne101/react-webapp_extension#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  }
 }
