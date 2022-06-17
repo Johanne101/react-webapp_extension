@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """ first endpoint for status of our API """
-
 from os import getenv
 
-from flask import Blueprint, Flask, jsonify
+from flask import Blueprint
+from flask import Flask
+from flask import jsonify
 from flask_cors import CORS
 from models import storage
 
