@@ -14,6 +14,7 @@
 * [Chrome Extension w/ React and Webpack](https://www.youtube.com/watch?v=8OCEfOKzpAw)
 * [Chrome Developers](https://developer.chrome.com/)
   - [Getting Started - Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
+    1. [Introduce a User Interface](https://developer.chrome.com/docs/extensions/mv3/getstarted/#user_interface)
 
 * [Webpack: What is Webpack?](https://duckduckgo.com/?q=what+is+webpack&t=brave&ia=web)
   - [`WebPack.js.org`](https://webpack.js.org/) | `img>>__<<`
