@@ -1,30 +1,32 @@
 `react-webapp_extension`
 
-
 # Resources:
+
 ---
 
 ## Frameworks:
 
-* [Fibonacci Sequence - Scalable Path](https://www.scalablepath.com/project-management/agile-points-fibonacci-sequence);
+- [Fibonacci Sequence - Scalable Path](https://www.scalablepath.com/project-management/agile-points-fibonacci-sequence);
 
-  * Timelines
-  * Complexity
+  - Timelines
+  - Complexity
 
-* [Chrome Extension w/ React and Webpack](https://www.youtube.com/watch?v=8OCEfOKzpAw)
-* [Chrome Developers](https://developer.chrome.com/)
+- [Chrome Extension w/ React and Webpack](https://www.youtube.com/watch?v=8OCEfOKzpAw)
+- [Chrome Developers](https://developer.chrome.com/)
+
   - [Getting Started - Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
     1. [Introduce a User Interface](https://developer.chrome.com/docs/extensions/mv3/getstarted/#user_interface)
 
-* [Webpack: What is Webpack?](https://duckduckgo.com/?q=what+is+webpack&t=brave&ia=web)
+- [Webpack: What is Webpack?](https://duckduckgo.com/?q=what+is+webpack&t=brave&ia=web)
+
   - [`WebPack.js.org`](https://webpack.js.org/) | `img>>__<<`
 
-* [`React`- What is React](https://en.wikipedia.org/wiki/React_(JavaScript_library))
-
+- [`React`- What is React](<https://en.wikipedia.org/wiki/React_(JavaScript_library)>)
 
 ### React:
 
-***Web Framework***
+**_Web Framework_**
+
 <p>
 React is an open-source, front end, JavaScript library for
 building user interfaces or UI components.
@@ -44,5 +46,3 @@ React Router is an example of such a library.[Wikipedia](https://en.wikipedia.or
 | Type: | JavaScript library |
 | License: | MIT License |
 | Wikipedia | Twitter |
-
-
