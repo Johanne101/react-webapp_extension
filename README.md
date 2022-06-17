@@ -43,6 +43,7 @@
   - [Getting Started - Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
     1. [Introduce a User Interface](https://developer.chrome.com/docs/extensions/mv3/getstarted/#user_interface)
 	2. [Basic React Set-Up](https://www.youtube.com/watch?v=8OCEfOKzpAw&t=200s)*3:20 - React Setup*
+	3. [WebPack](https://webpack.js.org/concepts/)
 
 * [Webpack: What is Webpack?](https://duckduckgo.com/?q=what+is+webpack&t=brave&ia=web)
   - [`WebPack.js.org`](https://webpack.js.org/) | `img>>__<<`
