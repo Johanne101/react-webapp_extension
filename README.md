@@ -13,9 +13,12 @@
 
 * [Chrome Extension w/ React and Webpack](https://www.youtube.com/watch?v=8OCEfOKzpAw)
 * [Chrome Developers](https://developer.chrome.com/)
-  * [Webpack: What is Webpack?](https://duckduckgo.com/?q=what+is+webpack&t=brave&ia=web)
-    - [`WebPack.js.org`](https://webpack.js.org/) | `img>>__<<`
-	- [`React`- What is React](https://en.wikipedia.org/wiki/React_(JavaScript_library))
+  - [Getting Started - Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
+
+* [Webpack: What is Webpack?](https://duckduckgo.com/?q=what+is+webpack&t=brave&ia=web)
+  - [`WebPack.js.org`](https://webpack.js.org/) | `img>>__<<`
+
+* [`React`- What is React](https://en.wikipedia.org/wiki/React_(JavaScript_library))
 
 
 ### React:
