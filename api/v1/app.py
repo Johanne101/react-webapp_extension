@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """ first endpoint for status of our API """
 
+from os import getenv
+
 from flask import Blueprint, Flask, jsonify
 from flask_cors import CORS
 from models import storage
-from api.v1.views import app_views
-from os import getenv
 
+from api.v1.views import app_views
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
