@@ -1,9 +1,6 @@
-# React-webapp_extension
+`react-webapp_extension`
+# Resources:
 
-
-
-
-## Resources
 
 * [Chrome Extension with React & Webpack](https://www.youtube.com/watch?v=8OCEfOKzpAw)
 * [Python Flask]()
@@ -21,14 +18,6 @@
 |delete | |
 |listing | |
 | amending objects | |
-
-* 
-=======
-`react-webapp_extension`
-
-# Resources:
-
----
 
 ## Frameworks:
 
@@ -68,6 +57,7 @@ so creating React applications usually requires the use of additional libraries 
 React Router is an example of such a library.[Wikipedia](https://en.wikipedia.org/wiki/React_(JavaScript_library))
 </p>
 
+|   |   |
 |:------------------:|---------------|
 | Original author(s): | Jordan Walke |
 | Developer(s): | Facebook and community |
