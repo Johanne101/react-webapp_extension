@@ -1,30 +1,27 @@
 # React-webapp_extension
 
-
-
-
 ## Resources
 
-* [Chrome Extension with React & Webpack](https://www.youtube.com/watch?v=8OCEfOKzpAw)
-* [Python Flask]()
-  ***Requests***
-  * `GET`
-  * `POST`
-  * `DELETE`
+- [Chrome Extension with React & Webpack](https://www.youtube.com/watch?v=8OCEfOKzpAw)
+- [Python Flask]()
+  **_Requests_**
 
-* [Thread class](https://www.javatpoint.com/how-to-create-a-thread-in-java)
-* [Methods]()
+  - `GET`
+  - `POST`
+  - `DELETE`
 
-|Methods|
-|-------|
-|creation | |
-|delete | |
-|listing | |
-| amending objects | |
+- [Thread class](https://www.javatpoint.com/how-to-create-a-thread-in-java)
+- [Methods]()
 
-* 
-=======
-`react-webapp_extension`
+| Methods          |
+| ---------------- | --- |
+| creation         |     |
+| delete           |     |
+| listing          |     |
+| amending objects |     |
+
+- =======
+  `react-webapp_extension`
 
 # Resources:
 
@@ -42,15 +39,13 @@
 
   - [Getting Started - Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/)
     1. [Introduce a User Interface](https://developer.chrome.com/docs/extensions/mv3/getstarted/#user_interface)
-	  2. [Basic React Set-Up](https://www.youtube.com/watch?v=8OCEfOKzpAw&t=200s)*3:20 - React Setup*
-	  3. [WebPack](https://webpack.js.org/concepts/)
-	    * Instalation: Left off [here](https://www.youtube.com/watch?v=8OCEfOKzpAw)
-
+    2. [Basic React Set-Up](https://www.youtube.com/watch?v=8OCEfOKzpAw&t=200s)_3:20 - React Setup_
+    3. [WebPack](https://webpack.js.org/concepts/)
+    - Instalation: Left off [here](https://www.youtube.com/watch?v=8OCEfOKzpAw)
 
 * [Webpack: What is Webpack?](https://duckduckgo.com/?q=what+is+webpack&t=brave&ia=web)
   - [`WebPack.js.org`](https://webpack.js.org/) | `img>>__<<`
   - [Webpack Installation](https://webpack.js.org/guides/installation/)
-
 
 - [`React`- What is React](<https://en.wikipedia.org/wiki/React_(JavaScript_library)>)
 
@@ -77,4 +72,3 @@ React Router is an example of such a library.[Wikipedia](https://en.wikipedia.or
 | Type: | JavaScript library |
 | License: | MIT License |
 | Wikipedia | Twitter |
-
