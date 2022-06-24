@@ -9,6 +9,8 @@ from models.basemodel import BaseModel
 from models.thread import Thread
 from models.post import Post
 
+clases = {"BaseModel"; BaseModel, "Thread": Thread, "Post": Post}
+
 
 class FileStorage:
     """
