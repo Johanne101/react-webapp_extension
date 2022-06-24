@@ -9,7 +9,7 @@ from models.basemodel import BaseModel
 from models.thread import Thread
 from models.post import Post
 
-clases = {"BaseModel"; BaseModel, "Thread": Thread, "Post": Post}
+clases = {"BaseModel": BaseModel, "Thread": Thread, "Post": Post}
 
 
 class FileStorage:
@@ -23,8 +23,14 @@ class FileStorage:
     __objects = {}
     """is a dictionary"""
 
-    def all(self):
+    def all(self, cls=None):
         """returns the dict __objects"""
+        if cls is not None:
+            new_dict = {}
+            for key, value in self.__objects.items():
+                if cls == value.__class__ or cls == value.__class__.__name__:
+                    new_dict[key] = value
+            return new_dic
         return self.__objects
 
     def new(self, obj):
@@ -59,3 +65,16 @@ class FileStorage:
                     self.__objects[key] = BaseModel(**val)
         except:
             pass
+
+    def get(self, cls, id):
+        try:
+            key = cls.__name__ + '.' + id
+        except Exception as e:
+            return None
+
+        if key in self.__objects:
+            return self.__objects[key]
+        return None
+
+    def count(self, cls=None):
+        return len(self.all(cls))
