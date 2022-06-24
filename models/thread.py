@@ -14,7 +14,6 @@ class Thread(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """ initializes values """
-        super.__init__(args, kwargs)
         self.url_plaintext = ""
         self.unique_ip_count = 0
         self.post_count = 0
@@ -22,7 +21,4 @@ class Thread(BaseModel):
         self.ratingNEG = 0
         self.unique_ip_list = []
         self.post_list = []
-
-#URL HASH
-#TOTAL NUMBER OF UNIQUE IP HASHS
-#LIST OF IP HASHES
+        super().__init__()
