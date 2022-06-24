@@ -17,6 +17,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """ Initializes values for base model """
+        from models import storage
         if kwargs:
             for key, value in kwargs.items():
                 if key != "__class__":
@@ -63,5 +64,6 @@ class BaseModel:
         Updates the public instance attribute
         with current date & time
         """
+        from models import storage
         self.updated_at = datetime.utcnow()
         models.storage.save()
