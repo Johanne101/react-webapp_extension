@@ -9,6 +9,7 @@ from models.basemodel import BaseModel
 from models.thread import Thread
 from models.post import Post
 import models
+import re
 
 classes = {"BaseModel": BaseModel, "Thread": Thread, "Post": Post}
 
@@ -32,19 +33,39 @@ class HBNBCommand(cmd.Cmd):
         """overwriting the emptyline method"""
         return False
 
-    def do_create(self, args):
+    def do_create(self, *args):
         """Creates a new instance of class"""
-        args = shlex.split(args)
+        regex_value = ['^-?//d+.//d+$', '^".+"$']
         if len(args) == 0:
             print("** class name missing **")
             return False
-        if args[0] in classes:
-            instance = classes[args[0]]()
+        argu = args[0].split()
+        if argu[0] in classes:
+            new_instance = classes[argu[0]]()
         else:
             print("** class doesn't exist **")
             return False
-        print(instance.id)
-        instance.save()
+        kDict = {}
+
+        for i in range(1, len(argu)):
+            if (re.search('^.+=.+$', argu[i])):
+                key = re.search('^.+=', argu[i]).group()[0:-1]
+                val = re.search('=.+$', argu[i]).group()[1:]
+                value = ''
+                if re.search(regex_value[0], val):
+                    # float
+                    value = float(val)
+                elif re.search(regex_value[1], val):
+                    # string
+                    value = val.replace('_', ' ')[1:-1].replace('//"', '"')
+                else:
+                    #integer
+                    value = eval(val)
+                kDict[key] = value
+
+        print(new_instance.id)
+        models.storage.new(new_instance)
+        models.storage.save()
 
     def do_show(self, arg):
         """Prints an instance as a string based on the class and id"""
@@ -65,24 +86,23 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_all(self, args):
-        """Print str representation of instance"""
-        args = shlex.split(args)
-        obj_list = []
-        if len(args) == 0:
-            for value in models.storage.all().values():
-                obj_list.append(str(value))
-            print("[", end="")
-            print(", ".join(obj_list), end="")
-            print("]")
-        elif args[0] in classes:
-            for key in models.storage.all():
-                if args[0] in key:
-                    obj_list.append(str(models.storage.all()[key]))
-            print("[", end="")
-            print(", ".join(obj_list), end="")
-            print("]")
+        """ Shows all objects, or all objects of a class"""
+        print_list = []
+
+
+        models.storage.all().items()
+        if args:
+            args = args.split(' ')[0]  # remove possible trailing args
+            if args not in classes:
+                print("** class doesn't exist **")
+                return
+            for k, v in models.storage.all().items():
+                if k.split('.')[0] == args:
+                    print_list.append(str(v))
         else:
-            print("** class doesn't exist **")
+            for k, v in models.storage.all().items():
+                print_list.append(str(v))
+        print(print_list)
 
     def do_destroy(self, args):
             """Deletes an instance based on the class and id"""
@@ -105,9 +125,7 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, args):
         """Update an instance based on the class name, id, attribute & value"""
         args = shlex.split(args)
-        integers = ["number_rooms", "number_bathrooms", "max_guest",
-                    "price_by_night"]
-        floats = ["latitude", "longitude"]
+        strings = ["thread_id", "post_content", "url_plaintext"]
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] in classes:
@@ -119,16 +137,11 @@ class HBNBCommand(cmd.Cmd):
                             if args[0] == "Place":
                                 if args[2] in integers:
                                     try:
-                                        args[3] = int(args[3])
+                                        args[3] = str(args[3])
                                     except:
-                                        args[3] = 0
-                                elif args[2] in floats:
-                                    try:
-                                        args[3] = float(args[3])
-                                    except:
-                                        args[3] = 0.0
-                            setattr(models.storage.all()[k], args[2], args[3])
-                            models.storage.all()[k].save()
+                                        args[3] = "ERROR NO STRING FILESTORAGE"
+                            setattr(models.storage.all()[key], args[2], args[3])
+                            models.storage.all()[key].save()
                         else:
                             print("** value missing **")
                     else:

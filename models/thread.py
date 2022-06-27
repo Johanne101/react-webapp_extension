@@ -15,6 +15,7 @@ class Thread(BaseModel):
     def __init__(self, *args, **kwargs):
         """ initializes values """
         self.url_plaintext = ""
+        self.url_hash = ""
         self.unique_ip_count = 0
         self.post_count = 0
         self.ratingPOS = 0
