@@ -19,7 +19,7 @@ class Post(BaseModel):
             if att not in kwargs:
                 print(err_string.format(att))
         try_thread = models.storage.get(Thread, kwargs["thread_id"])
-        if kwargs['reload'] is None:
+        if kwargs['reload'] is False:
             if try_thread is None:
                 print("ERROR: THREAD NOT FOUND")
             else:

@@ -60,6 +60,7 @@ class HBNBCommand(cmd.Cmd):
                     #integer
                     value = eval(val)
                 kDict[key] = value
+        kDict['reload'] = False
         new_instance = classes[argu[0]](**kDict)
         print(new_instance.id)
         models.storage.new(new_instance)
