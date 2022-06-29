@@ -61,8 +61,17 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r') as json_f:
                 emptdict_objs = json.loads(json_f.read())
+                post_dict = {}
                 for key, val in emptdict_objs.items():
-                    new_class = classes[key.split(".")[0]](**val)
+                    if key.split('.')[0] == "Thread":
+                        print("LOADED THREAD ({})".format(key.split('.')[1]))
+                        new_class = classes[key.split(".")[0]](**val)
+                    else:
+                        post_dict[key] = val
+                for key, val in post_dict.items():
+                    if key.split('.')[0] == "Post":
+                        print("LOADED POST ({})".format(key.split('.')[1]))
+                        new_class = classes[key.split(".")[0]](**val)
         except:
             pass
 
