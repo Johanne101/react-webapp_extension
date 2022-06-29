@@ -30,3 +30,15 @@ class Thread(BaseModel):
         self.unique_ip_list = []
         self.post_list = []
         super().__init__(**kwargs)
+
+    @property
+    def post_list_get(self):
+        """ Getter att that will return every post linked to the thread """
+        res = []
+        self.post_count = 0
+        all_post = models.storage.all(Post)
+        for post in all_post.values():
+            if post.thread_id == self.id:
+                res.append(post.id)
+                self.post_count += 1
+        return post
