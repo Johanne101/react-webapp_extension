@@ -18,10 +18,13 @@ class Post(BaseModel):
         for att in att_str_list:
             if att not in kwargs:
                 print(err_string.format(att))
-        try_thread = models.storage.get(Thread, kwargs["thread_id"])
+        super().__init__(*args, **kwargs)
         if kwargs['reload'] is False:
+            try_thread = models.storage.get(Thread, kwargs["thread_id"])
             if try_thread is None:
                 print("ERROR: THREAD NOT FOUND")
             else:
                 try_thread.post_count += 1
-        super().__init__(*args, **kwargs)
+                if self.user_id not in try_thread.unique_ip_list:
+                    try_thread.unique_ip_list.append(self.user_id)
+                    try_thread.unique_ip_count += 1
