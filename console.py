@@ -40,9 +40,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return False
         argu = args[0].split()
-        if argu[0] in classes:
-            new_instance = classes[argu[0]]()
-        else:
+        if argu[0] not in classes:
             print("** class doesn't exist **")
             return False
         kDict = {}
@@ -62,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
                     #integer
                     value = eval(val)
                 kDict[key] = value
-
+        new_instance = classes[argu[0]](**kDict)
         print(new_instance.id)
         models.storage.new(new_instance)
         models.storage.save()

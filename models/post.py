@@ -9,12 +9,14 @@ from os import getenv
 
 class Post(BaseModel):
     """ Post Content meant to be requested in batches """
-
     post_total = 0
 
     def __init__(self, *args, **kwargs):
         """ initializes values on creation """
-        self.user_id = ""
-        self.post_content = ""
-        self.thread_id = ""
+        err_string = "ERROR: NO [[[{}]]] provided"
+        att_str_list = ["post_content", "thread_id", "user_id"]
+        for att in att_str_list:
+            if att not in kwargs:
+                print(err_string.format(att))
+
         super().__init__(*args, **kwargs)

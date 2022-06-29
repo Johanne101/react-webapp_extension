@@ -62,7 +62,7 @@ class FileStorage:
             with open(self.__file_path, 'r') as json_f:
                 emptdict_objs = json.loads(json_f.read())
                 for key, val in emptdict_objs.items():
-                    self.new(classes[key.split(".")[0]](val))
+                    new_class = classes[key.split(".")[0]](**val)
         except:
             pass
 
