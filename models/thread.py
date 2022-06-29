@@ -32,8 +32,7 @@ class Thread(BaseModel):
         super().__init__(**kwargs)
         if kwargs['reload'] is True:
             self.list_get()
-        else:
-            print("Nothing")
+        delattr(self, 'reload')
 
     def list_get(self):
         """ Getter att that will return every post and unique user in thread """
