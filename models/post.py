@@ -18,5 +18,9 @@ class Post(BaseModel):
         for att in att_str_list:
             if att not in kwargs:
                 print(err_string.format(att))
-
+        try_thread = models.storage.get(Thread, kwargs["thread_id"])
+        if try_thread is None:
+            print("ERROR: THREAD NOT FOUND")
+        else:
+            try_thread.post_count += 1
         super().__init__(*args, **kwargs)
