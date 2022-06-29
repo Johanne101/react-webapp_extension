@@ -19,7 +19,7 @@ class HBNBCommand(cmd.Cmd):
     Define HBnB console
     """
 
-    prompt = "(hbnb) "
+    prompt = "(Spiel) "
 
     def do_quit(self, args):
         """Quit command to exit console"""
@@ -40,9 +40,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return False
         argu = args[0].split()
-        if argu[0] in classes:
-            new_instance = classes[argu[0]]()
-        else:
+        if argu[0] not in classes:
             print("** class doesn't exist **")
             return False
         kDict = {}
@@ -62,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
                     #integer
                     value = eval(val)
                 kDict[key] = value
-
+        new_instance = classes[argu[0]](**kDict)
         print(new_instance.id)
         models.storage.new(new_instance)
         models.storage.save()
@@ -87,8 +85,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, args):
         """ Shows all objects, or all objects of a class"""
-        print_list = []
-
+        f = "[{}] ({}):\n{}\n"
 
         models.storage.all().items()
         if args:
@@ -98,11 +95,10 @@ class HBNBCommand(cmd.Cmd):
                 return
             for k, v in models.storage.all().items():
                 if k.split('.')[0] == args:
-                    print_list.append(str(v))
+                    print(str(f.format(k.split('.')[0], k.split('.')[1], v.to_dict())))
         else:
             for k, v in models.storage.all().items():
-                print_list.append(str(v))
-        print(print_list)
+                print(str(f.format(k.split('.')[0], k.split('.')[1], v.to_dict())))
 
     def do_destroy(self, args):
             """Deletes an instance based on the class and id"""

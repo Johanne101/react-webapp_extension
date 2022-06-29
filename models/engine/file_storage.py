@@ -61,8 +61,20 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r') as json_f:
                 emptdict_objs = json.loads(json_f.read())
+                thread_dict = {}
                 for key, val in emptdict_objs.items():
-                    self.new(classes[key.split(".")[0]](val))
+                    if key.split('.')[0] == "Post":
+                        print("LOADED Post ({})".format(key.split('.')[1]))
+                        val['reload'] = True
+                        new_class = classes[key.split(".")[0]](**val)
+                    else:
+                        thread_dict[key] = val
+                for key, val in thread_dict.items():
+                    if key.split('.')[0] == "Thread":
+                        print("LOADED Thread ({})".format(key.split('.')[1]))
+                        val['reload'] = True
+                        new_class = classes[key.split(".")[0]](**val)
+
         except:
             pass
 
