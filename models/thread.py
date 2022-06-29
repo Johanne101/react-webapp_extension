@@ -30,15 +30,25 @@ class Thread(BaseModel):
         self.unique_ip_list = []
         self.post_list = []
         super().__init__(**kwargs)
+        if kwargs['reload'] is True:
+            self.list_get()
+        else:
+            print("Nothing")
 
-    @property
-    def post_list_get(self):
-        """ Getter att that will return every post linked to the thread """
-        res = []
+    def list_get(self):
+        """ Getter att that will return every post and unique user in thread """
+        post_res = []
+        user_res = []
         self.post_count = 0
-        all_post = models.storage.all(Post)
+        self.unique_ip_count = 0
+
+        all_post = models.storage.all("Post")
         for post in all_post.values():
             if post.thread_id == self.id:
-                res.append(post.id)
+                post_res.append(post.id)
                 self.post_count += 1
-        return post
+                if post.user_id not in user_res:
+                    user_res.append(post.user_id)
+                    self.unique_ip_count += 1
+        self.post_list = post_res
+        self.unique_ip_list = user_res
