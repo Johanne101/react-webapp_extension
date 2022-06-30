@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 """ API Backend for user feedback application """
 
+import sys
+print(sys.path)
 from flask import Flask, jsonify, request
+from models import storage
 
 app = Flask(__name__)
 
