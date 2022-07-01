@@ -19,6 +19,18 @@ def get_thread(thread_id):
 
     return jsonify(thread.to_dict())
 
+@app_views.route('/thread_id/<thread_url>', methods=['GET'], strict_slashes=False)
+def get_thread_id(thread_url):
+    """ Will obtain thread metadata """
+    threads = storage.all(Thread).items()
+    if not threads:
+        abort(404)
+
+    for i in threads:
+        if i[1].url_plaintext == thread_url:
+            return jsonify(i[1].id)
+    abort(404)
+
 @app_views.route('/thread_new/', methods=['POST'], strict_slashes=False)
 def post_thread():
     """ Will create a thread """
