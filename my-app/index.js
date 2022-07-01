@@ -1,5 +1,5 @@
-import React from "react"; 7.2K (gzipped: 2.9K)
-import { render } from "react-dom"; 119.8K (gzipped: 39K)
+import React from "react";
+import { render } from "react-dom";
 
 function Popup() {
     return (
