@@ -1,7 +1,7 @@
 `react-webapp_extension`
 # Resources:
 
-
+* [Making Progress : Build React App](https://create-react-app.dev/docs/getting-started/)
 * [Chrome Extension with React & Webpack](https://www.youtube.com/watch?v=8OCEfOKzpAw)
 * [Python Flask]()
   ***Requests***
