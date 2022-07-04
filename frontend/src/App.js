@@ -4,10 +4,11 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload in the matrix Part 3 (day1)on vacation</p>
+          Edit <code>src/App.js</code> and save to reload</p>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -16,6 +17,14 @@ function App() {
         >
           Learn React Penguin Style
         </a>
+        <div><button>Like</button><button>Dislike</button></div>
+        <div>
+          <body>
+            <form>
+              Post: <input type=""></input>
+            </form>
+          </body>
+        </div>
       </header>
     </div>
   );
