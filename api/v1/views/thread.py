@@ -31,16 +31,18 @@ def get_thread_id(thread_url):
             return jsonify(i[1].id)
     abort(404)
 
-@app_views.route('/thread_new/', methods=['POST'], strict_slashes=False)
+@app_views.route('/threads', methods=['POST'], strict_slashes=False)
 def post_thread():
     """ Will create a thread """
     if not request.get_json():
         abort(400, description="Invalid input, Non-JSON")
 
-    if 'target_url' not in request.get_json():
+    if 'url' not in request.get_json():
         abort(400, description="No url provided")
 
+    print("TEST2")
     data = request.get_json()
+    data['reload'] = False
     new_thread = Thread(**data)
     new_thread.save()
-    return make_response(jsonify(instance.to_dict()), 201)
+    return make_response(jsonify(new_thread.to_dict()), 201)
