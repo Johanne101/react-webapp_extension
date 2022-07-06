@@ -10,27 +10,9 @@ class App extends React.Component {
   
     // Initializing the state 
     this.state = { 
-      posts: [
-          {
-            "user_id": "", 
-            "post_content": "testing content", 
-            "thread_id": "", 
-            "id": "6ba5e073-dece-463c-9959-99053d714e3f", 
-            "created_at": "2022-06-24T19:14:23.284395", 
-            "updated_at": "2022-06-24T19:14:23.284498", 
-            "__class__": "Post"
-          },
-          {
-            "user_id": "", 
-            "post_content": "testing content2", 
-            "thread_id": "", 
-            "id": "6ba5e073-dece-463c-9959-99053d714e3f", 
-            "created_at": "2022-06-24T19:14:23.284395", 
-            "updated_at": "2022-06-24T19:14:23.284498", 
-            "__class__": "Post"
-          }
-      ],
-      postsText: ""
+      posts: [],
+      postsText: "",
+      thread_id:""
       // console.log(this.state.postsText)
     };
   }
@@ -38,6 +20,29 @@ class App extends React.Component {
     this.initthread();
   }
 
+  sendRequest = async () => {
+    console.log({
+      "thread_id": this.state.thread_id, 
+      "user_id":"0.0.0.0", 
+      "post_content":this.state.postsText
+    });
+    await fetch('http://127.0.0.1:5000/api/v1/posts',
+      {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"}, 
+        body: JSON.stringify({
+          "thread_id": this.state.thread_id, 
+          "user_id":"0.0.0.0", 
+          "post_content":this.state.postsText
+        })
+      }
+    );
+    this.setState({posts: [
+        ...this.state.posts,
+        {post_content:this.state.postsText}
+      ]
+    })
+  }
   
   handleChange = e => {
     this.setState({
@@ -60,7 +65,8 @@ class App extends React.Component {
         headers: {"Content-Type": "application/json"}, 
         body: JSON.stringify({"url": url})
       });
-      thread_id = await res.text();
+      thread_id = await res.json();
+      thread_id = thread_id.id;
     } catch(e){
       console.log(e);
     }
@@ -76,7 +82,8 @@ class App extends React.Component {
       const res = await fetch(`http://127.0.0.1:5000/api/v1/posts/${el}`)
       post_list.push(await res.json())
     }
-    this.setState({ posts : post_list })
+    console.log('setting thread_id',thread_id)
+    this.setState({ posts : post_list, thread_id })
   }
   
   create_posts() {
@@ -92,8 +99,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload</p>
+          <p>Spiel Ink</p>
             {posts}
           <div><button>Like</button><button>Dislike</button></div>
           <div>
@@ -101,6 +107,7 @@ class App extends React.Component {
               <form>
                 Post: <input name="postsText" type="text" onChange={this.handleChange} />
               </form>
+              <button onClick={this.sendRequest}>Submit</button>
             </body>
           </div>
         </header>
