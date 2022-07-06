@@ -30,7 +30,8 @@ class App extends React.Component {
             "__class__": "Post"
           }
       ],
-      postsText: ""
+      postsText: "",
+      thread_id:""
       // console.log(this.state.postsText)
     };
   }
@@ -38,6 +39,24 @@ class App extends React.Component {
     this.initthread();
   }
 
+  sendRequest = async () => {
+    console.log({
+      "thread_id": this.state.thread_id, 
+      "user_id":"0.0.0.0", 
+      "post_content":this.state.postsText
+    });
+    await fetch('http://127.0.0.1:5000/api/v1/posts',
+      {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"}, 
+        body: JSON.stringify({
+          "thread_id": this.state.thread_id, 
+          "user_id":"0.0.0.0", 
+          "post_content":this.state.postsText
+        })
+      }
+    );
+  }
   
   handleChange = e => {
     this.setState({
@@ -55,7 +74,8 @@ class App extends React.Component {
         headers: {"Content-Type": "application/json"}, 
         body: JSON.stringify({url:'google.com'})
       });
-      thread_id = await res.text();
+      thread_id = await res.json();
+      thread_id = thread_id.id;
     } catch(e){
       console.log(e);
     }
@@ -71,7 +91,8 @@ class App extends React.Component {
       const res = await fetch(`http://127.0.0.1:5000/api/v1/posts/${el}`)
       post_list.push(await res.json())
     }
-    this.setState({ posts : post_list })
+    console.log('setting thread_id',thread_id)
+    this.setState({ posts : post_list, thread_id })
   }
   
   create_posts() {
@@ -96,6 +117,7 @@ class App extends React.Component {
               <form>
                 Post: <input name="postsText" type="text" onChange={this.handleChange} />
               </form>
+              <button onClick={this.sendRequest}>Submit</button>
             </body>
           </div>
         </header>
