@@ -10,26 +10,7 @@ class App extends React.Component {
   
     // Initializing the state 
     this.state = { 
-      posts: [
-          {
-            "user_id": "", 
-            "post_content": "testing content", 
-            "thread_id": "", 
-            "id": "6ba5e073-dece-463c-9959-99053d714e3f", 
-            "created_at": "2022-06-24T19:14:23.284395", 
-            "updated_at": "2022-06-24T19:14:23.284498", 
-            "__class__": "Post"
-          },
-          {
-            "user_id": "", 
-            "post_content": "testing content2", 
-            "thread_id": "", 
-            "id": "6ba5e073-dece-463c-9959-99053d714e3f", 
-            "created_at": "2022-06-24T19:14:23.284395", 
-            "updated_at": "2022-06-24T19:14:23.284498", 
-            "__class__": "Post"
-          }
-      ],
+      posts: [],
       postsText: "",
       thread_id:""
       // console.log(this.state.postsText)
@@ -56,6 +37,11 @@ class App extends React.Component {
         })
       }
     );
+    this.setState({posts: [
+        ...this.state.posts,
+        {post_content:this.state.postsText}
+      ]
+    })
   }
   
   handleChange = e => {
