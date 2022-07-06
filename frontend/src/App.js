@@ -48,19 +48,24 @@ class App extends React.Component {
 
   async initthread() {
     let thread_id;
+    let url = "err";
+
+    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+      url = tabs[0].url;
+    });
     try {
       const res = await fetch('http://127.0.0.1:5000/api/v1/threads',
       {
         method: 'POST',
         headers: {"Content-Type": "application/json"}, 
-        body: JSON.stringify({url:'google.com'})
+        body: JSON.stringify({"url": url})
       });
       thread_id = await res.text();
     } catch(e){
       console.log(e);
     }
     if(!thread_id){
-      const response = await fetch('http://127.0.0.1:5000/api/v1/thread_id/localhost'); 
+      const response = await fetch('http://127.0.0.1:5000/api/v1/thread_id/' + url); 
       thread_id = await response.text();
       thread_id = thread_id.slice(1,thread_id.length-2)  
     }
