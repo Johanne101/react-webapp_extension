@@ -40,7 +40,6 @@ def post_thread():
     if 'url' not in request.get_json():
         abort(400, description="No url provided")
 
-    print("TEST2")
     data = request.get_json()
     data['reload'] = False
     new_thread = Thread(**data)
